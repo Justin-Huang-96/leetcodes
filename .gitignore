@@ -1,0 +1,9 @@
+**/target/
+**/*.iml
+**/.flattened-pom.xml
+.idea
+.vscode
+.fastRequest
+/**.gz
+/**.log
+
