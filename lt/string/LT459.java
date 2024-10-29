@@ -38,11 +38,35 @@ public class LT459 {
         for (int length = 1; length <= s.length() / 2; length++) {
             String element = s.substring(0, length);
             //判断s是否可以被element重复多次构成
-            if (isRepeated(s, element)) {
+            if (isRepeated2(s, element)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /*用更少内存的方式，判断*/
+    private boolean isRepeated2(String s, String element) {
+        if (s.length() % element.length() == 0) {
+            int index = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == element.charAt(index)) {
+                    index++;
+                } else {
+                    return false;
+                }
+                if (index >= element.length()) {
+                    index = 0;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String s = "abab";
+        System.out.println(new LT459().repeatedSubstringPattern(s));
     }
 
     private boolean isRepeated(String s, String element) {
